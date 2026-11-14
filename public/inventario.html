@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario · Nova Salud</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="topbar" id="topbar"></header>
+    <main>
+        <h1>Inventario</h1>
+
+        <div class="barra">
+            <input type="search" id="filtroTexto" class="crece" placeholder="Buscar producto" autocomplete="off">
+            <select id="filtroCategoria"><option value="">Todas las categorías</option></select>
+            <select id="filtroEstado">
+                <option value="">Todos los estados</option>
+                <option value="bajo">Stock bajo o agotado</option>
+                <option value="vence">Vencidos o por vencer</option>
+            </select>
+            <button id="btnNuevo" class="oculto">Nuevo producto</button>
+        </div>
+
+        <div id="error" class="error oculto" role="alert"></div>
+        <div class="tabla-scroll"><table>
+            <thead><tr>
+                <th>Producto</th><th>Categoría</th><th class="num">Precio</th>
+                <th class="num">Stock</th><th class="num">Mínimo</th><th>Vencimiento</th><th>Acciones</th>
+            </tr></thead>
+            <tbody id="filas"></tbody>
+        </table></div>
+        <p class="mini" id="resumen"></p>
+    </main>
+
+    <!-- Entrada de mercadería -->
+    <dialog id="dlgEntrada">
+        <form method="dialog" id="formEntrada">
+            <h2>Ingreso de mercadería</h2>
+            <p id="entradaProducto" class="mini"></p>
+            <label>Cantidad recibida <input type="number" id="entradaCantidad" min="1" step="1" required></label>
+            <label>Motivo / referencia (opcional) <input type="text" id="entradaMotivo" placeholder="Ej.: Pedido a proveedor #123"></label>
+            <div id="entradaError" class="error oculto"></div>
+            <div class="pie"><button type="button" class="sec" data-cerrar>Cancelar</button><button type="submit">Registrar entrada</button></div>
+        </form>
+    </dialog>
+
+    <!-- Ajuste por conteo físico -->
+    <dialog id="dlgAjuste">
+        <form method="dialog" id="formAjuste">
+            <h2>Ajuste de inventario</h2>
+            <p id="ajusteProducto" class="mini"></p>
+            <label>Stock real contado <input type="number" id="ajusteStock" min="0" step="1" required></label>
+            <label>Motivo del ajuste (obligatorio) <input type="text" id="ajusteMotivo" required placeholder="Ej.: Conteo físico, merma, rotura"></label>
+            <div id="ajusteError" class="error oculto"></div>
+            <div class="pie"><button type="button" class="sec" data-cerrar>Cancelar</button><button type="submit">Aplicar ajuste</button></div>
+        </form>
+    </dialog>
+
+    <!-- Kardex -->
+    <dialog id="dlgKardex">
+        <h2 id="kardexTitulo">Kardex</h2>
+        <div class="tabla-scroll" style="max-height:55vh;overflow:auto"><table>
+            <thead><tr><th>Fecha</th><th>Tipo</th><th class="num">Cant.</th><th class="num">Saldo</th><th>Motivo</th><th>Usuario</th></tr></thead>
+            <tbody id="kardexFilas"></tbody>
+        </table></div>
+        <div class="pie"><button type="button" class="sec" data-cerrar>Cerrar</button></div>
+    </dialog>
+
+    <!-- Alta / edición de producto -->
+    <dialog id="dlgProducto">
+        <form method="dialog" id="formProducto">
+            <h2 id="productoTitulo">Producto</h2>
+            <label>Nombre <input type="text" id="pNombre" required></label>
+            <label>Descripción <input type="text" id="pDescripcion"></label>
+            <div class="grid2">
+                <label>Precio (S/) <input type="number" id="pPrecio" min="0" step="0.01" required></label>
+                <label>Stock mínimo <input type="number" id="pMinimo" min="0" step="1" value="5" required></label>
+            </div>
+            <div class="grid2">
+                <label id="pStockWrap">Stock inicial <input type="number" id="pStock" min="0" step="1" value="0"></label>
+                <label>Vencimiento <input type="date" id="pVence"></label>
+            </div>
+            <div class="grid2">
+                <label>Categoría <select id="pCategoria"><option value="">—</option></select></label>
+                <label>Proveedor <select id="pProveedor"><option value="">—</option></select></label>
+            </div>
+            <label class="check"><input type="checkbox" id="pReceta"> Requiere receta médica</label>
+            <div id="productoError" class="error oculto"></div>
+            <div class="pie"><button type="button" class="sec" data-cerrar>Cancelar</button><button type="submit">Guardar</button></div>
+        </form>
+    </dialog>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/js/inventario.js"></script>
+</body>
+</html>

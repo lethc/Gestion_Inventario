@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento · Nova Salud</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="topbar" id="topbar"></header>
+    <main>
+        <h1>Mantenimiento</h1>
+        <div class="barra" id="pestanas"></div>
+
+        <div class="barra">
+            <input type="search" id="buscar" class="crece" placeholder="Buscar" autocomplete="off">
+            <button id="btnNuevo">Nuevo</button>
+        </div>
+        <div id="error" class="error oculto" role="alert"></div>
+        <div class="tabla-scroll"><table>
+            <thead id="cabecera"></thead>
+            <tbody id="filas"></tbody>
+        </table></div>
+    </main>
+
+    <dialog id="dlgForm">
+        <form method="dialog" id="formulario">
+            <h2 id="formTitulo"></h2>
+            <div id="campos"></div>
+            <div id="formError" class="error oculto"></div>
+            <div class="pie"><button type="button" class="sec" id="btnCancelar">Cancelar</button><button type="submit">Guardar</button></div>
+        </form>
+    </dialog>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/js/mantenimiento.js"></script>
+</body>
+</html>

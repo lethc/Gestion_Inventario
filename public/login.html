@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión · Nova Salud</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="login-caja card">
+        <div class="marca">Nova Salud</div>
+        <form id="formLogin">
+            <label>Correo electrónico
+                <input type="email" id="email" required autocomplete="username" autofocus>
+            </label>
+            <label>Contraseña
+                <input type="password" id="password" required autocomplete="current-password">
+            </label>
+            <div id="mensaje" class="error oculto" role="alert"></div>
+            <button type="submit" class="grande" id="btnIngresar">Ingresar</button>
+        </form>
+    </div>
+    <script type="module" src="/js/login.js"></script>
+</body>
+</html>

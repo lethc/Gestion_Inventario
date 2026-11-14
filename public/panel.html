@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel · Nova Salud</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="topbar" id="topbar"></header>
+    <main>
+        <h1>Panel</h1>
+        <div id="error" class="error oculto" role="alert"></div>
+
+        <section class="tarjetas" id="tarjetas"></section>
+
+        <div class="grid2">
+            <section class="card" id="seccionAlertas">
+                <h2>Productos por reponer <span class="badge mal" id="contadorAlertas">0</span></h2>
+                <p class="mini">Se actualiza en tiempo real cuando una venta lleva un producto a su stock mínimo.</p>
+                <div id="listaAlertas"></div>
+            </section>
+
+            <section class="card" id="seccionVencimientos">
+                <h2>Vencidos y por vencer (30 días)</h2>
+                <div id="listaVencimientos"></div>
+            </section>
+        </div>
+
+        <section class="card" id="seccionTop">
+            <h2>Más vendidos (últimos 30 días)</h2>
+            <div id="listaTop"></div>
+        </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/js/panel.js"></script>
+</body>
+</html>

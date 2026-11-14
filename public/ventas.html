@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas · Nova Salud</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="topbar" id="topbar"></header>
+    <main>
+        <h1>Historial de ventas</h1>
+
+        <form class="barra" id="filtros">
+            <label style="margin:0">Desde <input type="date" id="desde"></label>
+            <label style="margin:0">Hasta <input type="date" id="hasta"></label>
+            <label style="margin:0">Estado
+                <select id="estado">
+                    <option value="">Todas</option>
+                    <option value="completada">Completadas</option>
+                    <option value="anulada">Anuladas</option>
+                </select>
+            </label>
+            <button type="submit">Filtrar</button>
+        </form>
+
+        <div id="error" class="error oculto" role="alert"></div>
+        <div class="tabla-scroll"><table>
+            <thead><tr><th>N.°</th><th>Fecha</th><th>Vendedor</th><th>Cliente</th><th class="num">Total</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="filas"></tbody>
+        </table></div>
+        <p class="mini" id="resumen"></p>
+    </main>
+
+    <dialog id="dlgVenta">
+        <h2 id="ventaTitulo">Venta</h2>
+        <p class="mini" id="ventaMeta"></p>
+        <div class="tabla-scroll"><table>
+            <thead><tr><th>Producto</th><th class="num">Cant.</th><th class="num">P. unit.</th><th class="num">Subtotal</th></tr></thead>
+            <tbody id="ventaItems"></tbody>
+        </table></div>
+        <div class="total-linea"><span>Total</span><span id="ventaTotal"></span></div>
+        <div id="ventaError" class="error oculto"></div>
+        <div class="pie">
+            <button type="button" class="peligro oculto" id="btnAnular">Anular venta</button>
+            <button type="button" class="sec" id="btnCerrar">Cerrar</button>
+        </div>
+    </dialog>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/js/ventas.js"></script>
+</body>
+</html>
