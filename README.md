@@ -110,3 +110,7 @@ El cliente se conecta con `io({ auth: { token } })`. Sin token válido la conexi
 - **Seguridad:** secreto JWT en `.env`, contraseñas con bcrypt, `helmet`, límite de intentos de login, el mismo mensaje ante cualquier fallo de credenciales y roles verificados en el servidor. Cada petición confirma en la base que la cuenta sigue activa, así que desactivar un usuario corta su acceso de inmediato.
 - **Capas:** `router → controller → service → model`, igual que el repo base `my-nodejs`.
 - **Zona horaria:** "hoy" en el panel y en los filtros de fecha usa la hora del servidor.
+
+## Autor
+
+Eduardo Tinta ([@lethc](https://github.com/lethc)) — Trabajo final del curso Fullstack Developer Software, SENATI.
